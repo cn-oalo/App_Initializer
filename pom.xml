@@ -20,33 +20,28 @@
     </modules>
 
     <properties>
-        <cn-oalo.version>1.0.0</cn-oalo.version>
+        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <spring-boot.version>2.7.14</spring-boot.version>
+        <spring-boot.version>2.7.12</spring-boot.version>
         <mybatis-plus.version>3.5.3</mybatis-plus.version>
-        <mysql.version>8.0.31</mysql.version>
         <druid.version>1.2.16</druid.version>
-        <jwt.version>0.11.5</jwt.version>
-        <fastjson.version>2.0.32</fastjson.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
-        <commons-io.version>2.11.0</commons-io.version>
-        <commons-fileupload.version>1.5</commons-fileupload.version>
-        <commons-collections.version>3.2.2</commons-collections.version>
-        <hutool.version>5.8.16</hutool.version>
-        <lombok.version>1.18.26</lombok.version>
+        <jwt.version>0.9.1</jwt.version>
+        <commons.io.version>2.11.0</commons.io.version>
+        <commons.fileupload.version>1.4</commons.fileupload.version>
+        <commons.collections.version>3.2.2</commons.collections.version>
         <swagger.version>3.0.0</swagger.version>
-        <knife4j.version>3.0.3</knife4j.version>
-        <aliyun-oss.version>3.15.1</aliyun-oss.version>
+        <knife4j.version>2.0.9</knife4j.version>
+        <aliyun.oss.version>3.15.1</aliyun.oss.version>
+        <velocity.version>2.3</velocity.version>
+        <hutool.version>5.8.18</hutool.version>
+        <jackson.version>2.13.5</jackson.version>
     </properties>
 
     <!-- 依赖声明 -->
     <dependencyManagement>
         <dependencies>
-            <!-- SpringBoot 依赖配置 -->
+            <!-- SpringBoot的依赖配置-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -55,135 +50,135 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- 本项目模块 -->
-            <dependency>
-                <groupId>cn.oalo</groupId>
-                <artifactId>cn-oalo-common</artifactId>
-                <version>${cn-oalo.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.oalo</groupId>
-                <artifactId>cn-oalo-framework</artifactId>
-                <version>${cn-oalo.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.oalo</groupId>
-                <artifactId>cn-oalo-system</artifactId>
-                <version>${cn-oalo.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.oalo</groupId>
-                <artifactId>cn-oalo-admin</artifactId>
-                <version>${cn-oalo.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.oalo</groupId>
-                <artifactId>cn-oalo-generator</artifactId>
-                <version>${cn-oalo.version}</version>
-            </dependency>
-
-            <!-- MyBatis Plus -->
+            <!-- Mybatis Plus -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
 
-            <!-- MySQL驱动 -->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
-            </dependency>
-
-            <!-- Druid数据库连接池 -->
+            <!-- Druid -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
 
-            <!-- JWT依赖 -->
+            <!-- JWT -->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-api</artifactId>
+                <artifactId>jjwt</artifactId>
                 <version>${jwt.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-impl</artifactId>
-                <version>${jwt.version}</version>
-                <scope>runtime</scope>
-            </dependency>
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-jackson</artifactId>
-                <version>${jwt.version}</version>
-                <scope>runtime</scope>
             </dependency>
 
-            <!-- Swagger文档 -->
+            <!-- Commons IO -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+
+            <!-- Commons Fileupload -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons.fileupload.version}</version>
+            </dependency>
+
+            <!-- Commons Collections -->
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons.collections.version}</version>
+            </dependency>
+
+            <!-- Swagger -->
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-boot-starter</artifactId>
                 <version>${swagger.version}</version>
             </dependency>
 
-            <!-- Knife4j增强版Swagger -->
+            <!-- Knife4j -->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
             </dependency>
 
-            <!-- 阿里JSON解析器 -->
+            <!-- aliyun OSS -->
             <dependency>
-                <groupId>com.alibaba.fastjson2</groupId>
-                <artifactId>fastjson2</artifactId>
-                <version>${fastjson.version}</version>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun.oss.version}</version>
             </dependency>
 
-            <!-- Apache Commons工具类 -->
+            <!-- Velocity -->
             <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>${commons-lang3.version}</version>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity.version}</version>
             </dependency>
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${commons-io.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-fileupload</groupId>
-                <artifactId>commons-fileupload</artifactId>
-                <version>${commons-fileupload.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-collections</groupId>
-                <artifactId>commons-collections</artifactId>
-                <version>${commons-collections.version}</version>
-            </dependency>
-
-            <!-- Hutool工具类 -->
+            
+            <!-- Hutool工具包 -->
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
-
-            <!-- Lombok -->
+            
+            <!-- MySQL驱动 -->
             <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.31</version>
             </dependency>
 
-            <!-- 阿里云OSS -->
+            <!-- 内部模块 -->
             <dependency>
-                <groupId>com.aliyun.oss</groupId>
-                <artifactId>aliyun-sdk-oss</artifactId>
-                <version>${aliyun-oss.version}</version>
+                <groupId>cn.oalo</groupId>
+                <artifactId>cn-oalo-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.oalo</groupId>
+                <artifactId>cn-oalo-framework</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.oalo</groupId>
+                <artifactId>cn-oalo-system</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.oalo</groupId>
+                <artifactId>cn-oalo-generator</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Jackson -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

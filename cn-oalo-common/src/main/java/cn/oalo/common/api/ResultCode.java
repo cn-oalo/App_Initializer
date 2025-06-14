@@ -1,7 +1,7 @@
 package cn.oalo.common.api;
 
 /**
- * 通用返回状态码
+ * API返回码
  */
 public enum ResultCode implements IErrorCode {
     /**
@@ -32,18 +32,78 @@ public enum ResultCode implements IErrorCode {
     /**
      * 资源不存在
      */
-    NOT_FOUND(404, "资源不存在");
+    NOT_FOUND(404, "资源不存在"),
+    
+    /**
+     * 服务器内部错误
+     */
+    INTERNAL_SERVER_ERROR(500, "服务器内部错误"),
+    
+    /**
+     * 用户名或密码错误
+     */
+    USERNAME_OR_PASSWORD_ERROR(1001, "用户名或密码错误"),
+    
+    /**
+     * 用户已被禁用
+     */
+    USER_DISABLED(1002, "用户已被禁用"),
+    
+    /**
+     * 用户已存在
+     */
+    USER_ALREADY_EXISTS(1003, "用户已存在"),
+    
+    /**
+     * 验证码错误
+     */
+    CAPTCHA_ERROR(1004, "验证码错误"),
+    
+    /**
+     * 验证码已过期
+     */
+    CAPTCHA_EXPIRED(1005, "验证码已过期"),
+    
+    /**
+     * 文件上传错误
+     */
+    FILE_UPLOAD_ERROR(2001, "文件上传失败"),
+    
+    /**
+     * 文件下载错误
+     */
+    FILE_DOWNLOAD_ERROR(2002, "文件下载失败"),
+    
+    /**
+     * 文件删除错误
+     */
+    FILE_DELETE_ERROR(2003, "文件删除失败"),
+    
+    /**
+     * 文件不存在
+     */
+    FILE_NOT_FOUND(2004, "文件不存在"),
+    
+    /**
+     * 文件大小超过限制
+     */
+    FILE_SIZE_LIMIT(2005, "文件大小超过限制"),
+    
+    /**
+     * 文件类型不支持
+     */
+    FILE_TYPE_NOT_ALLOWED(2006, "文件类型不支持");
 
-    private final Integer code;
+    private final long code;
     private final String message;
 
-    ResultCode(Integer code, String message) {
+    ResultCode(long code, String message) {
         this.code = code;
         this.message = message;
     }
 
     @Override
-    public Integer getCode() {
+    public long getCode() {
         return code;
     }
 
