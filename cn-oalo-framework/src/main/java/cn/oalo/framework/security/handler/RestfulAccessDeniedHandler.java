@@ -1,0 +1,27 @@
+package cn.oalo.framework.security.handler;
+
+import cn.hutool.json.JSONUtil;
+import cn.oalo.common.api.R;
+import cn.oalo.common.api.ResultCode;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.stereotype.Component;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+/**
+ * 自定义未授权处理器
+ */
+@Component
+public class RestfulAccessDeniedHandler implements AccessDeniedHandler {
+    @Override
+    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
+        response.getWriter().println(JSONUtil.toJsonStr(R.failed(ResultCode.FORBIDDEN, "没有相关权限")));
+        response.getWriter().flush();
+    }
+} 
