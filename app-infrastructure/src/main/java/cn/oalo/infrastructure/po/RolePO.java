@@ -17,10 +17,10 @@ import java.time.LocalDateTime;
  */
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("role")
-public class RolePO implements Serializable {
+@TableName("t_role")
+public class RolePO extends BasePO implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
@@ -59,4 +59,10 @@ public class RolePO implements Serializable {
      */
     @TableField("update_time")
     private LocalDateTime updateTime;
+
+    /**
+     * 状态：0-禁用，1-启用
+     */
+    @TableField("status")
+    private Integer status;
 } 

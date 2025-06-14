@@ -17,10 +17,10 @@ import java.time.LocalDateTime;
  */
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("user")
-public class UserPO implements Serializable {
+@TableName("t_user")
+public class UserPO extends BasePO implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
