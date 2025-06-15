@@ -91,10 +91,11 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
 
-        <!-- Swagger -->
+        <!-- Knife4j -->
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+            <version>4.1.0</version>
         </dependency>
     </dependencies>
 </project> 

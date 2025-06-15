@@ -1,7 +1,6 @@
 package cn.oalo.common.api;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,38 +10,38 @@ import java.util.List;
  * 分页结果
  */
 @Data
-@ApiModel(value = "分页结果")
+@Schema(name = "分页结果", description = "分页结果")
 public class PageResult<T> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
      * 当前页码
      */
-    @ApiModelProperty(value = "当前页码")
+    @Schema(description = "当前页码")
     private Integer pageNum;
 
     /**
      * 每页数量
      */
-    @ApiModelProperty(value = "每页数量")
+    @Schema(description = "每页数量")
     private Integer pageSize;
 
     /**
      * 总记录数
      */
-    @ApiModelProperty(value = "总记录数")
+    @Schema(description = "总记录数")
     private Long total;
 
     /**
      * 总页数
      */
-    @ApiModelProperty(value = "总页数")
+    @Schema(description = "总页数")
     private Integer pages;
 
     /**
      * 数据列表
      */
-    @ApiModelProperty(value = "数据列表")
+    @Schema(description = "数据列表")
     private List<T> list;
 
     /**

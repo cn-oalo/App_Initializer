@@ -31,7 +31,7 @@
         <commons.fileupload.version>1.4</commons.fileupload.version>
         <commons.collections.version>3.2.2</commons.collections.version>
         <swagger.version>3.0.0</swagger.version>
-        <knife4j.version>2.0.9</knife4j.version>
+        <knife4j.version>4.1.0</knife4j.version>
         <aliyun.oss.version>3.15.1</aliyun.oss.version>
         <velocity.version>2.3</velocity.version>
         <hutool.version>5.8.18</hutool.version>
@@ -104,17 +104,10 @@
                 <version>${commons.collections.version}</version>
             </dependency>
 
-            <!-- Swagger -->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-boot-starter</artifactId>
-                <version>${swagger.version}</version>
-            </dependency>
-
             <!-- Knife4j -->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
             </dependency>
 

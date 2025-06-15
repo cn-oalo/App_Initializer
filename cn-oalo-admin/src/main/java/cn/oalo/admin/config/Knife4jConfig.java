@@ -1,48 +1,49 @@
 package cn.oalo.admin.config;
 
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 /**
  * Knife4j配置
  */
 @Configuration
-@EnableSwagger2WebMvc
 public class Knife4jConfig {
 
-    @Bean
-    public Docket adminApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(new ApiInfoBuilder()
-                        .title("企业级应用框架API文档")
-                        .description("企业级应用框架API文档")
-                        .version("1.0.0")
-                        .build())
-                .groupName("管理端接口")
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("cn.oalo.admin.controller"))
-                .paths(PathSelectors.any())
-                .build();
-    }
+    @Value("${swagger.enabled:true}")
+    private boolean enabled;
+    
+    @Value("${swagger.title:API文档}")
+    private String title;
+    
+    @Value("${swagger.description:API文档}")
+    private String description;
+    
+    @Value("${swagger.version:1.0.0}")
+    private String version;
+    
+    @Value("${swagger.contact.name:}")
+    private String contactName;
+    
+    @Value("${swagger.contact.url:}")
+    private String contactUrl;
+    
+    @Value("${swagger.contact.email:}")
+    private String contactEmail;
 
     @Bean
-    public Docket systemApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(new ApiInfoBuilder()
-                        .title("企业级应用框架API文档")
-                        .description("企业级应用框架API文档")
-                        .version("1.0.0")
-                        .build())
-                .groupName("系统模块接口")
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("cn.oalo.web.controller.system"))
-                .paths(PathSelectors.any())
-                .build();
+    public OpenAPI openAPI() {
+        return new OpenAPI()
+                .info(new Info()
+                        .title(title)
+                        .description(description)
+                        .version(version)
+                        .contact(new Contact()
+                                .name(contactName)
+                                .url(contactUrl)
+                                .email(contactEmail)));
     }
 } 

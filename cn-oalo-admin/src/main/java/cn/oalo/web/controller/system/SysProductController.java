@@ -9,9 +9,9 @@ import cn.oalo.system.vo.SysProductVO;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 /**
  * 产品管理控制器
  */
-@Api(tags = "产品管理接口")
+@Tag(name = "产品管理接口", description = "产品管理相关接口")
 @RestController
 @RequestMapping("/system/product")
 public class SysProductController {
@@ -37,15 +37,15 @@ public class SysProductController {
     /**
      * 获取产品列表
      */
-    @ApiOperation("获取产品列表")
+    @Operation(summary = "获取产品列表", description = "分页获取产品列表信息")
     @PreAuthorize("@ss.hasPermi('system:product:list')")
     @GetMapping("/list")
     public R<PageResult<SysProductVO>> list(
-            @ApiParam("页码") @RequestParam(defaultValue = "1") Integer pageNum,
-            @ApiParam("每页数量") @RequestParam(defaultValue = "10") Integer pageSize,
-            @ApiParam("产品名称") @RequestParam(required = false) String productName,
-            @ApiParam("产品编码") @RequestParam(required = false) String productCode,
-            @ApiParam("产品分类") @RequestParam(required = false) String category) {
+            @Parameter(description = "页码") @RequestParam(defaultValue = "1") Integer pageNum,
+            @Parameter(description = "每页数量") @RequestParam(defaultValue = "10") Integer pageSize,
+            @Parameter(description = "产品名称") @RequestParam(required = false) String productName,
+            @Parameter(description = "产品编码") @RequestParam(required = false) String productCode,
+            @Parameter(description = "产品分类") @RequestParam(required = false) String category) {
         
         // 构建查询条件
         LambdaQueryWrapper<SysProduct> queryWrapper = new LambdaQueryWrapper<>();
@@ -68,7 +68,7 @@ public class SysProductController {
     /**
      * 获取产品详情
      */
-    @ApiOperation("获取产品详情")
+    @Operation(summary = "获取产品详情", description = "根据产品ID获取产品详细信息")
     @PreAuthorize("@ss.hasPermi('system:product:query')")
     @GetMapping("/{productId}")
     public R<SysProductVO> getInfo(@PathVariable Long productId) {
@@ -82,7 +82,7 @@ public class SysProductController {
     /**
      * 新增产品
      */
-    @ApiOperation("新增产品")
+    @Operation(summary = "新增产品", description = "新增产品信息")
     @PreAuthorize("@ss.hasPermi('system:product:add')")
     @PostMapping
     public R<Void> add(@Validated @RequestBody SysProductDTO productDTO) {
@@ -104,7 +104,7 @@ public class SysProductController {
     /**
      * 修改产品
      */
-    @ApiOperation("修改产品")
+    @Operation(summary = "修改产品", description = "修改产品信息")
     @PreAuthorize("@ss.hasPermi('system:product:edit')")
     @PutMapping
     public R<Void> edit(@Validated @RequestBody SysProductDTO productDTO) {
@@ -138,7 +138,7 @@ public class SysProductController {
     /**
      * 删除产品
      */
-    @ApiOperation("删除产品")
+    @Operation(summary = "删除产品", description = "根据产品ID删除产品信息")
     @PreAuthorize("@ss.hasPermi('system:product:remove')")
     @DeleteMapping("/{productIds}")
     public R<Void> remove(@PathVariable Long[] productIds) {
@@ -149,7 +149,7 @@ public class SysProductController {
     /**
      * 获取产品分类列表
      */
-    @ApiOperation("获取产品分类列表")
+    @Operation(summary = "获取产品分类列表", description = "获取所有产品分类信息")
     @PreAuthorize("@ss.hasPermi('system:product:list')")
     @GetMapping("/categories")
     public R<List<String>> getCategories() {
@@ -171,7 +171,7 @@ public class SysProductController {
     /**
      * 更新产品状态
      */
-    @ApiOperation("更新产品状态")
+    @Operation(summary = "更新产品状态", description = "更新产品上下架状态")
     @PreAuthorize("@ss.hasPermi('system:product:edit')")
     @PutMapping("/status/{productId}/{status}")
     public R<Void> updateStatus(

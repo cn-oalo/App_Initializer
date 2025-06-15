@@ -43,12 +43,16 @@ public class SecurityConfig {
             "/auth/login",
             "/auth/register",
             "/swagger-ui/**",
+            "/swagger-ui.html",
             "/swagger-resources/**",
+            "/v2/api-docs/**",
             "/v3/api-docs/**",
             "/webjars/**",
             "/doc.html",
             "/druid/**",
-            "/favicon.ico"
+            "/favicon.ico",
+            "/knife4j/**",
+            "/knife4j.html"
     };
 
     @Bean

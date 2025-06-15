@@ -8,6 +8,7 @@ spring:
     name: cn-oalo-admin
   profiles:
     active: dev
+  # OpenAPI 3.0配置
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
@@ -76,13 +77,52 @@ jwt:
 
 swagger:
   enabled: true
-  title: OALO API文档
-  description: OALO API文档
+  title: oALO API文档
+  description: oALO API文档
   version: 1.0.0
   contact:
     name: cR
     url: https://blog.oalo.cn
     email: admin@oalo.cn
+    
+# knife4j配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 管理端接口
+      packages-to-scan: cn.oalo.admin.controller
+    - group: 系统模块接口
+      packages-to-scan: cn.oalo.web.controller.system
+      
+# knife4j增强配置
+knife4j:
+  enable: true
+  setting:
+    language: zh-CN
+    enable-swagger-models: true
+    enable-document-manage: true
+    swagger-model-name: 实体类列表
+    enable-version: false
+    enable-reload-cache-parameter: false
+    enable-after-script: true
+    enable-filter-multipart-api-method-type: POST
+    enable-filter-multipart-apis: false
+    enable-request-cache: true
+    enable-host: false
+    enable-host-text: 127.0.0.1:8080
+    enable-home-custom: true
+    home-custom-location: classpath:markdown/home.md
+    enable-search: false
+    enable-footer: false
+    enable-footer-custom: true
+    footer-custom-content: Copyright © 2025 OALO
+    enable-dynamic-parameter: false
+    enable-debug: true
+    enable-open-api: true
+    enable-group: true
 
 # 日志配置
 logging:
