@@ -21,6 +21,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     private SysUserMapper userMapper;
 
     @Autowired
+    @org.springframework.context.annotation.Lazy
     private PasswordEncoder passwordEncoder;
 
     @Override

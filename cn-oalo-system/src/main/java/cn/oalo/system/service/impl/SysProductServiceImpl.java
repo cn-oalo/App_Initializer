@@ -149,10 +149,12 @@ public class SysProductServiceImpl extends ServiceImpl<SysProductMapper, SysProd
     @Transactional(rollbackFor = Exception.class)
     public boolean deleteProductByIds(Long[] productIds) {
         // 批量逻辑删除
-        boolean result = update(new SysProduct(), new LambdaQueryWrapper<SysProduct>()
-                .in(SysProduct::getProductId, Arrays.asList(productIds))
-                .set(SysProduct::getDelFlag, 1)
-                .set(SysProduct::getUpdateTime, LocalDateTime.now()));
+        SysProduct updateEntity = new SysProduct();
+        updateEntity.setDelFlag(1);
+        updateEntity.setUpdateTime(LocalDateTime.now());
+        
+        boolean result = update(updateEntity, new LambdaQueryWrapper<SysProduct>()
+                .in(SysProduct::getProductId, Arrays.asList(productIds)));
         
         // 清除相关缓存
         if (result) {

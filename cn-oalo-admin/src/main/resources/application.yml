@@ -8,11 +8,14 @@ spring:
     name: cn-oalo-admin
   profiles:
     active: dev
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cn_oalo?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://111.229.149.99:13306/cn_oalo?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     username: root
-    password: 123456
+    password: 5p7K56hyAMtb5AWK
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       initial-size: 5

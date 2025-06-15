@@ -1,4 +1,4 @@
-package cn.oalo.admin.controller;
+package cn.oalo.web.controller.system;
 
 import cn.oalo.common.api.PageResult;
 import cn.oalo.common.api.R;

@@ -26,6 +26,7 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
+    @org.springframework.context.annotation.Lazy
     private UserDetailsService userDetailsService;
 
     @Autowired

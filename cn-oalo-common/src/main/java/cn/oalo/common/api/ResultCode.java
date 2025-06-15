@@ -94,16 +94,16 @@ public enum ResultCode implements IErrorCode {
      */
     FILE_TYPE_NOT_ALLOWED(2006, "文件类型不支持");
 
-    private final long code;
+    private final Integer code;
     private final String message;
 
     ResultCode(long code, String message) {
-        this.code = code;
+        this.code = (int)code;
         this.message = message;
     }
 
     @Override
-    public long getCode() {
+    public Integer getCode() {
         return code;
     }
 
