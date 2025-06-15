@@ -41,9 +41,9 @@ spring:
         login-username: admin
         login-password: 123456
   redis:
-    host: localhost
+    host: 111.229.149.99
     port: 6379
-    password:
+    password: DM27NPKemdX3sBYB
     database: 0
     timeout: 10s
     lettuce:
@@ -99,18 +99,6 @@ file:
   # 文件存储类型（LOCAL本地 ALIYUN_OSS阿里云 TENCENT_COS腾讯云 QINIU_KODO七牛云 MINIO）
   storage:
     type: LOCAL
-
-# 项目相关配置
-oalo:
-  # 名称
-  name: Oalo
-  # 版本
-  version: 1.0.0
-  # 版权年份
-  copyrightYear: 2025
-  # 文件路径 示例（ Windows配置D:/oalo/uploadPath，Linux配置 /home/oalo/uploadPath）
-  profile: D:/oalo/uploadPath
-
 # 阿里云OSS配置
 oss:
   # 访问域名

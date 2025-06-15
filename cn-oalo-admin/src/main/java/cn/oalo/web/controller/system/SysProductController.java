@@ -1,6 +1,5 @@
 package cn.oalo.admin.controller;
 
-import cn.oalo.common.api.PageQuery;
 import cn.oalo.common.api.PageResult;
 import cn.oalo.common.api.R;
 import cn.oalo.system.dto.SysProductDTO;
@@ -21,7 +20,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -64,7 +62,7 @@ public class SysProductController {
         List<SysProductVO> voList = convertToVOList(page.getRecords());
         
         // 返回结果
-        return R.ok(new PageResult<>(voList, page.getTotal()));
+        return R.ok(new PageResult<>(pageNum, pageSize, page.getTotal(), voList));
     }
 
     /**
